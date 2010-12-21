@@ -1,0 +1,57 @@
+TCPServer-Interface
+
+A generic multithreaded TCP Server interface.
+
+A server listens for and accepts incoming TCP connections on a port or a
+Unix domain socket. And a pool of threads are created to handle the
+connections in parallel. The server code handling the connections is to be
+implemented in the inheriting class.
+
+A more sophisticated implementation may require serialization in processing
+requests, e.g. logging. There must be a dedicated worker thread that serially
+processes requests from the server threads.
+
+Hence _server() is the interface method to be implemented, and _worker() is an
+optional interface method. If _worker() is inplemented, each _server() thread
+needs to communicate with it via a pair of queues for two-way communication.
+
+Version 0.01 is a pure Perl implementation.
+
+INSTALLATION
+
+To install this module, run the following commands:
+
+	perl Makefile.PL
+	make
+	make test
+	make install
+
+SUPPORT AND DOCUMENTATION
+
+After installing, you can find documentation for this module with the
+perldoc command.
+
+    perldoc TCPServer::Interface
+
+You can also look for information at:
+
+    RT, CPAN's request tracker
+        http://rt.cpan.org/NoAuth/Bugs.html?Dist=TCPServer-Interface
+
+    AnnoCPAN, Annotated CPAN documentation
+        http://annocpan.org/dist/TCPServer-Interface
+
+    CPAN Ratings
+        http://cpanratings.perl.org/d/TCPServer-Interface
+
+    Search CPAN
+        http://search.cpan.org/dist/TCPServer-Interface/
+
+
+COPYRIGHT AND LICENCE
+
+Copyright (C) 2010 Kan Liu
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
